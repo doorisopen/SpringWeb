@@ -55,7 +55,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">사장님 전용 <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">사장님 등록</a></li>
-                <li><a href="#">나의 가게</a></li>
+                <li><a href="/myweb/ceo">나의 가게 관리</a></li>
                 <!-- 
                 <li class="divider"></li>
                 <li><a href="#">Separated link</a></li>

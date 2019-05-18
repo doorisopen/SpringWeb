@@ -64,7 +64,7 @@
 <div class="wrapper">
 <!-- Header.jsp -->
   <%@include file="include/header.jsp"%>
-	<!-- /.Header.jsp -->  
+	<!-- /.Header.jsp -->
 	
   <!-- Full Width Column -->
   <div class="content-wrapper">
@@ -81,6 +81,7 @@
 	          <div class="box box-solid">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">Event</h3>
+	              <a href="#"><span class="pull-right"> more</span></a>
 	            </div>
 	            <!-- /.box-header -->
 	            <div class="box-body">
@@ -127,6 +128,46 @@
 	        </div>
 	        <!-- /.col hidden-sm col-md-2-->
 	        
+	        <!-- Notic Form -->
+	        <div class="col-md-8">
+	          <div class="box box-solid">
+	            <div class="box-header with-border">
+	              <h3 class="box-title">Notice</h3>
+	              <a href="#"><span class="pull-right"> more</span></a>
+	            </div>
+	            <!-- /.box-header -->
+	            <div class="box-body">
+	              Notice Form
+	            </div>
+	            <!-- /.box-body -->
+	          </div>
+	          <!-- /.box -->
+	        </div>
+	        <!-- /.Notic Form -->
+	        
+	        <!-- Login Form -->
+	        <div class="col-md-4">
+	          <div class="box box-solid">
+	            <div class="box-header with-border">
+	              <h3 class="box-title">please check login</h3>
+	            </div>
+	            <!-- /.box-header -->
+	            <div class="box-body">
+	            	<a href="/myweb/login">
+	              		<button type="button" class="btn btn-block btn-warning btn-flat">Login</button>
+	              	</a>
+	            </div>
+	            <!-- /.box-body -->
+	            <div class="box-footer">
+		            <ul class="list-inline">
+		            	<li><a href="#" class="link-black text-sm">아이디/비밀번호 찾기</a></li>
+		            	<li class="pull-right"><a href="/myweb/register" class="link-black text-sm">회원가입</a></li>
+		            </ul>
+	            </div>
+	          </div>
+	          <!-- /.box -->
+	        </div>
+	        <!-- /.Login Form -->
 	        
 	        <div class="col-xs-12">
 	          <div class="box">
