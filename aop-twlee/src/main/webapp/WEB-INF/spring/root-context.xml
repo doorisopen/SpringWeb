@@ -9,6 +9,10 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
+	
+	
+	<context:component-scan base-package="org.kpu.myweb"></context:component-scan>
+	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -33,9 +37,17 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<!-- 
-	<context:component-scan base-package="org.kpu.myweb.service" />
-	<context:component-scan base-package="org.kpu.myweb.persistence" />
+	<!-- 패키지 
+	
+	<context:component-scan base-package="org.kpu.myweb.ceo" />
+	<context:component-scan base-package="org.kpu.myweb.utils" />
 	<context:component-scan base-package="org.kpu.myweb.exception" />
-	 -->	
+	
+	-->
+	
+	
+	
+	 
+	 
+	 
 </beans>

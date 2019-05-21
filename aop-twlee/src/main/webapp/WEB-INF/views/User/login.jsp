@@ -97,7 +97,7 @@
     </div>
      -->
     <br>
-    <a href="/cubism/registerPage" class="text-center">회원가입</a>
+    <a href="/myweb/registerPage" class="text-center">회원가입</a>
 
   </div>
   <!-- /.login-box-body -->

@@ -5,6 +5,8 @@
   
 <configuration>
   <typeAliases>
-        <package name="org.kpu.myweb.domain" />
+  
+        <typeAlias type="org.kpu.myweb.domain.UserVO" alias="UserVO"/> 
+        
   </typeAliases>   
 </configuration>

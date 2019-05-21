@@ -35,32 +35,10 @@ public class HomeController {
 		
 		return "home";
 	}
-	@RequestMapping(value = "/ceo", method = RequestMethod.GET)
-	public String ceohome(Locale locale, Model model) {
-		logger.info("Welcome ceoHome! The client locale is {}.", locale);
+	
+	@RequestMapping(value="/access_denied_page")
+    public String accessDeniedPage() throws Exception {
 		
-		
-		return "Ceo/ceoHome";
-	}
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Locale locale, Model model) {
-		logger.info("Welcome login! The client locale is {}.", locale);
-		
-		
-		return "User/login";
-	}
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register(Locale locale, Model model) {
-		logger.info("Welcome register! The client locale is {}.", locale);
-		
-		
-		return "User/register";
-	}
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profile(Locale locale, Model model) {
-		logger.info("Welcome profile! The client locale is {}.", locale);
-		
-		
-		return "User/profile";
-	}
+        return "/common/access_denied_page";
+    }
 }

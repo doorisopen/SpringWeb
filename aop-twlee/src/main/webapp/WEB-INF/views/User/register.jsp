@@ -56,33 +56,27 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" id="userName" name="userName" class="form-control" placeholder="Name">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
         <input type="text" id="userAge" name="userAge" class="form-control" placeholder="Age">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
+      <div class="form-group has-feedback">
+        <input type="text" id="userPhone" name="userPhone" class="form-control" placeholder="Phone">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" id="userAddress" name="userAddress" class="form-control" placeholder="Address">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
       <!-- radio -->
-      <div class="row" style="margin-bottom:7px;">
-      	<div class="col-xs-6">
-	      <label>
-	      	Male
-	      	<input type="radio" id="userSex" name="userSex" class="flat-red" value="Male" checked>
-	      </label>
-	      <label>
-	      	Female
-	      	<input type="radio" id="userSex" name="userSex"  class="flat-red" value="Female">     
-	      </label>
-	  	</div>
-		<div class="col-xs-6">
-			<a href="#" id="user_id_checkBtn" class="btn btn-primary btn-block btn-flat">회원 등록 중복검사</a>
+      <div class="row" style="margin-bottom:10px;">
+		<div class="col-xs-6  pull-right">
+			<a href="#" id="user_id_checkBtn" class="btn btn-block btn-warning btn-flat">회원 등록 중복검사</a>
 	    </div>
       </div>
       <div class="row">
       
         <div class="col-xs-8">
-        <a href="/cubism/loginPage" class="text-center">이미 가입한 계정이 있습니다</a>
+        <a href="/myweb/loginPage" class="text-center">이미 가입한 계정이 있습니다</a>
         
           <!-- I agree to the terms --------------------------------------
           <div class="checkbox icheck">
@@ -94,7 +88,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-        	<a href="#" id="signUpBtn" class="btn btn-primary btn-block btn-flat">Register</a>
+        	<a href="#" id="signUpBtn" class="btn btn-block btn-warning btn-flat">Register</a>
         </div>
         <!-- /.col -->
       </div>
@@ -116,22 +110,5 @@
 <!-- User Check -->
 <script src="resources/user/usercheck.js"></script>
 
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-    
-  	//Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass   : 'iradio_flat-green'
-    });
-    
-  });
-  
-</script>
 </body>
 </html>

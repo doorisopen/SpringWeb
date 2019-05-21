@@ -153,7 +153,7 @@
 	            </div>
 	            <!-- /.box-header -->
 	            <div class="box-body">
-	            	<a href="/myweb/login">
+	            	<a href="/myweb/loginPage">
 	              		<button type="button" class="btn btn-block btn-warning btn-flat">Login</button>
 	              	</a>
 	            </div>
