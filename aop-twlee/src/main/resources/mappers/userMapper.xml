@@ -12,12 +12,14 @@
   		aop_user (
   		 userId,
   		 userPw,
+  		 userNickName,
   		 userAge,
   		 userPhone,
   		 userAddress
   		) VALUES (
   		 #{userId},
   		 #{userPw},
+  		 #{userNickName},
   		 #{userAge},
   		 #{userPhone},
   		 #{userAddress}

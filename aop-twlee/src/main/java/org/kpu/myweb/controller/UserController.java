@@ -64,8 +64,6 @@ public class UserController {
 		
 		
 		//System.out.println("UserRegister Start =================================================");
-		System.out.println("userName : " + request.getParameter("userName"));
-		System.out.println("userSex : " + request.getParameter("userSex"));
 		System.out.println("userId : " + request.getParameter("userId"));
 		System.out.println("userPw : " + request.getParameter("userPw"));
 		

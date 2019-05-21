@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -148,22 +152,45 @@
 	        <!-- Login Form -->
 	        <div class="col-md-4">
 	          <div class="box box-solid">
-	            <div class="box-header with-border">
-	              <h3 class="box-title">please check login</h3>
-	            </div>
-	            <!-- /.box-header -->
-	            <div class="box-body">
-	            	<a href="/myweb/loginPage">
-	              		<button type="button" class="btn btn-block btn-warning btn-flat">Login</button>
-	              	</a>
-	            </div>
-	            <!-- /.box-body -->
-	            <div class="box-footer">
-		            <ul class="list-inline">
-		            	<li><a href="#" class="link-black text-sm">아이디/비밀번호 찾기</a></li>
-		            	<li class="pull-right"><a href="/myweb/register" class="link-black text-sm">회원가입</a></li>
-		            </ul>
-	            </div>
+	          	<!-- 로그인 완료시 -->
+	          	<sec:authorize access="isAuthenticated()">
+		          	<div class="box-header with-border">
+		            	<h3 class="box-title">Welcome to FLB</h3>
+		            </div>   	
+		            <div class="box-body">
+		            	<sec:authentication property="principal.username"/> 님 반갑습니다.
+		            </div>
+
+		            <div class="box-footer">
+			            <form action="${pageContext.request.contextPath}/logout" method="POST">
+				            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				            <div class="pull-right">	
+				            	<input class="btn btn-default btn-flat" type="submit" value="Sign out" /> 
+				            </div>
+			            </form>
+		            </div>
+
+	            </sec:authorize>
+	            
+	            <!-- 로그인이 안돼어있을때 -->
+	            <sec:authorize access="isAnonymous()">
+		            <div class="box-header with-border">
+		              <h3 class="box-title">please check login</h3>
+		            </div>
+		            <!-- /.box-header -->
+		            <div class="box-body">
+		            	<a href="/myweb/loginPage">
+		              		<button type="button" class="btn btn-block btn-warning btn-flat">Login</button>
+		              	</a>
+		            </div>
+		            <!-- /.box-body -->
+		            <div class="box-footer">
+			            <ul class="list-inline">
+			            	<li><a href="#" class="link-black text-sm">아이디/비밀번호 찾기</a></li>
+			            	<li class="pull-right"><a href="/myweb/register" class="link-black text-sm">회원가입</a></li>
+			            </ul>
+		            </div>
+	            </sec:authorize>
 	          </div>
 	          <!-- /.box -->
 	        </div>

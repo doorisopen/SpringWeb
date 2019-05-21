@@ -52,7 +52,25 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
      <%-- <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/> --%>
-     	<div class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-8">
+        <label>
+        	<a href="/myweb/registerPage" class="text-center">회원가입</a>
+        </label>
+        <!-- 
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox" id="remember_me" name="_spring_security_remember_me"/> Remember Me
+            </label>
+          </div>
+        -->
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-12">
      	<!-- Error Message Spring Security Reserve -->
 			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
 			    <font color="red">
@@ -61,44 +79,10 @@
 			        <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session"/>
 			    </font>
 			</c:if>
-		 
         </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox" id="remember_me" name="_spring_security_remember_me"/> Remember Me
-            </label>
-          </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-        <!-- /.col -->
-      </div>
+      </div>	
     </form:form>
-    <!-- Error Message----------------------------------------------
-   	<div class="row">
-    	<div class="col-xs-12">
-			<c:if test='${ error eq "login" }'>
-            	<p style="color:#FF0000">이메일 혹은 비밀번호를 잘못 입력하셨습니다.</p>
-            </c:if>
-            <c:if test='${ error eq "duplicate" }'>
-            	<p style="color:#FF0000">이미 로그인하고 있는 사용자입니다.</p>
-            </c:if>
-            <c:if test='${ error eq "not found" }'>
-            	<p style="color:#FF0000">등록되지 않은 유저입니다.</p>
-            </c:if>
-            <c:if test="${ param.logout == 'true' }">
-            	<p style="color:#FF0000">로그아웃 되었습니다.</p>
-            </c:if>
-        </div>
-    </div>
-     -->
-    <br>
-    <a href="/myweb/registerPage" class="text-center">회원가입</a>
-
+    
   </div>
   <!-- /.login-box-body -->
 </div>

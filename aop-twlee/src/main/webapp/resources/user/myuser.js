@@ -22,10 +22,10 @@ function fn_signUp() {
 	        $("#userPw").focus();
 	        
 	    }
-	    else if($("#userName").val().length < 1)
+	    else if($("#userNickName").val().length < 1)
 	    {
-	        alert("이름을 입력해주세요");
-	        $("#userName").focus();
+	        alert("별명을 입력해주세요");
+	        $("#userNickname").focus();
 	    }
 	    
 	    else if($("#userAge").val().length < 1)
@@ -54,6 +54,9 @@ function fn_signUp() {
 	    {
 	    	if(window.confirm("회원가입을 하시겠습니까?"))
 	    	{
+	    	/*
+	    	 * Common.js 참고  
+	    	 */
 	    	var comSubmit = new ComSubmit("frm");
 	    	comSubmit.setUrl("/myweb/UserRegister");
 	    	comSubmit.addParam("userId", $("#userId").val());

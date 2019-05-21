@@ -5,6 +5,7 @@ public class UserVO {
 	private int userIdx;
 	private String userId;
 	private String userPw;
+	private String userNickName;
 	private String userAge;
 	private int userPhone;
 	private String userAddress;
@@ -13,6 +14,12 @@ public class UserVO {
 	private int enabled;
 	
 	
+	public String getUserNickName() {
+		return userNickName;
+	}
+	public void setUserNickName(String userNickName) {
+		this.userNickName = userNickName;
+	}
 	public int getUserIdx() {
 		return userIdx;
 	}

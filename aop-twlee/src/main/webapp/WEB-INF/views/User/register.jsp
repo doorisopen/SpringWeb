@@ -56,16 +56,17 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
+        <input type="text" id="userNickName" name="userNickName" class="form-control" placeholder="NickName">
+        <!-- <span class="glyphicon glyphicon-user form-control-feedback"></span> -->
+      </div>
+      <div class="form-group has-feedback">
         <input type="text" id="userAge" name="userAge" class="form-control" placeholder="Age">
-        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
         <input type="text" id="userPhone" name="userPhone" class="form-control" placeholder="Phone">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
         <input type="text" id="userAddress" name="userAddress" class="form-control" placeholder="Address">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <!-- radio -->
       <div class="row" style="margin-bottom:10px;">
@@ -105,9 +106,11 @@
 <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="resources/plugins/iCheck/icheck.min.js"></script>
-<!-- User Register -->
+<!-- Common - ltw -->
+<script src="resources/common/common.js" charset="UTF-8"></script>
+<!-- User Register - ltw -->
 <script src="resources/user/myuser.js"></script>
-<!-- User Check -->
+<!-- User Check - ltw -->
 <script src="resources/user/usercheck.js"></script>
 
 </body>
