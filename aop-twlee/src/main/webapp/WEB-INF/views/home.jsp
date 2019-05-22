@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
 <%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
@@ -85,7 +86,7 @@
 	          <div class="box box-solid">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">Event</h3>
-	              <a href="#"><span class="pull-right"> more</span></a>
+	              <a href="/myweb/BoardList?boardFlag=eve"><span class="pull-right"> more</span></a>
 	            </div>
 	            <!-- /.box-header -->
 	            <div class="box-body">
@@ -137,11 +138,40 @@
 	          <div class="box box-solid">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">Notice</h3>
-	              <a href="#"><span class="pull-right"> more</span></a>
+	              <a href="/myweb/BoardList?boardFlag=not"><span class="pull-right"> more</span></a>
 	            </div>
 	            <!-- /.box-header -->
 	            <div class="box-body">
-	              Notice Form
+	              <table id="example2" class="table table-bordered table-hover">
+					<thead>
+			            <tr>
+			                <th>No</th>
+			                <th>제목</th>
+			                <th>작성자</th>
+			            	<th>작성 일자</th>
+			        	</tr>
+			        </thead>
+			            <tbody>
+			            <!-- Memory 출력 -->
+						<c:choose>
+							<c:when test="${fn:length(notice) > 0}">
+						    	<c:forEach items="${notice}" var="notice" varStatus="rowcnt">
+						        	<tr>
+						            	<td>${notice.boardIdx}</td>
+						                <td>${notice.boardTitle}</td>
+						                <td>${notice.writer}</td>
+						                <td>${notice.writeDate}</td>
+						            </tr>
+						        </c:forEach>
+						    </c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="6">조회된 결과가 없습니다.</td>
+					  			</tr>
+							</c:otherwise>
+						</c:choose>
+				        </tbody>
+					</table>
 	            </div>
 	            <!-- /.box-body -->
 	          </div>
@@ -308,5 +338,18 @@
 
 </div>
 <!-- /.wrapper -->
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : false,
+      'autoWidth'   : false
+    })
+  })
+</script>
 </body>
 </html>

@@ -1,11 +1,17 @@
 package org.kpu.myweb;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.kpu.myweb.controller.BoardController;
+import org.kpu.myweb.domain.BoardVO;
+import org.kpu.myweb.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,21 +25,27 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@Autowired
+	BoardService service;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
+		/*
+		 	수정 예정..
+		 */
+		BoardVO vo = new BoardVO();
+		vo.setBoardFlag("not");
+		List<BoardVO> noticeList = service.BoardList(vo);
+		model.addAttribute("notice", noticeList);
 		
 		return "home";
+
 	}
 	
 	@RequestMapping(value="/access_denied_page")
