@@ -1,5 +1,8 @@
 package org.kpu.myweb.domain;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
 public class UserVO {
 
 	private int userIdx;
@@ -13,6 +16,23 @@ public class UserVO {
 	private String authority;
 	private int enabled;
 	
+	
+	/*
+	 * 시큐리티 현재 사용자의 유저를 가져오기
+	 */
+	public String getSecurityUser() {
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		if (principal instanceof UserDetails) {
+			userId = ((UserDetails)principal).getUsername();
+			
+		} else {
+			userId = principal.toString();
+			
+		}
+		return userId;
+	}
 	
 	public String getUserNickName() {
 		return userNickName;

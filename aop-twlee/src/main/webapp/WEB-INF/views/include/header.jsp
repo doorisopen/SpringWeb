@@ -42,7 +42,6 @@
 <%
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     Object principal = auth.getPrincipal();
-
 %>
 <body>
 
@@ -223,7 +222,10 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <!--
+                  	 ??? : 시큐리티 적용시 어떻게 아이디를 숨겨서 보내야하지??...... 
+                  -->
+                    <a href="/myweb/profilePage" class="btn btn-default btn-flat">Profile</a>
                   </div>
                   <div class="pull-right">
                     <a href="#" class="btn btn-default btn-flat">Sign out</a>

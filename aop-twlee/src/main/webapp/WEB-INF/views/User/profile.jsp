@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -26,7 +27,7 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="resources/dist/img/user4-128x128.jpg" alt="User profile picture">
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
+              <h3 class="profile-username text-center"><sec:authentication property="principal.username"/></h3>
 
               <p class="text-muted text-center">님 반갑습니다.</p>
 
@@ -41,8 +42,7 @@
                   <b>포인트</b> <a class="pull-right">0</a>
                 </li>
               </ul>
-
-              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+              <a href="/myweb/UserDelete" class="btn btn-danger btn-block"><b>회원탈퇴</b></a>
             </div>
             <!-- /.box-body -->
           </div>
@@ -156,57 +156,57 @@
               <!-- /.tab-pane -->
 
               <div class="tab-pane" id="settings">
-                <form class="form-horizontal">
+                <form:form class="form-horizontal" action="/myweb/UserUpdate" method="POST">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <label for="userId" class="col-sm-2 control-label">ID</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                      <input type="email" class="form-control" id="userId" name="userId" value="${userDetail.userId}" placeholder="ID">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <label for="userPw" class="col-sm-2 control-label">PW</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                      <input type="password" class="form-control" id="userPw" name="userPw" value="${userDetail.userPw}" placeholder="Password">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <label for="userNickName" class="col-sm-2 control-label">NickName</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="userNickName" name="userNickName" value="${userDetail.userNickName}" placeholder="NickName">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+                    <label for="userAge" class="col-sm-2 control-label">Age</label>
 
                     <div class="col-sm-10">
-                      <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                      <input type="text" class="form-control" id="userAge" name="userAge" value="${userDetail.userAge}" placeholder="Age">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+                    <label for="userPhone" class="col-sm-2 control-label">Phone</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                      <input type="text" class="form-control" id="userPhone" name="userPhone" value="${userDetail.userPhone}" placeholder="Phone">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="userAddress" class="col-sm-2 control-label">Address</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="userAddress" name="userAddress" value="${userDetail.userAddress}" placeholder="Address">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                        </label>
-                      </div>
+                    	<ul class="list-inline">
+                   			<li class="pull-right"><button type="submit" class="btn btn-warning pull-right">Submit</button></li>
+                  		</ul>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Submit</button>
-                    </div>
-                  </div>
-                </form>
+                </form:form>
               </div>
               <!-- /.tab-pane -->
             </div>
