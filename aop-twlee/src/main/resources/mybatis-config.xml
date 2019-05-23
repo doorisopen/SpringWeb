@@ -5,9 +5,8 @@
   
 <configuration>
   <typeAliases>
-  
         <typeAlias type="org.kpu.myweb.domain.UserVO" alias="UserVO"/> 
         <typeAlias type="org.kpu.myweb.domain.BoardVO" alias="BoardVO"/>
-        
+        <typeAlias type="org.kpu.myweb.ceo.domain.StoreVO" alias="StoreVO"/>
   </typeAliases>   
 </configuration>

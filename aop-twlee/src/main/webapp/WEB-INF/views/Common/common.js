@@ -1,5 +1,5 @@
 /**
- * Cubism Common Js
+ * Common Js
  * Made by lee tae woong
  */
 

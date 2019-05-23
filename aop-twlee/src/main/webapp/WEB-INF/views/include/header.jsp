@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="resources/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="resources/dist/css/AdminLTE.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="resources/bower_components/select2/dist/css/select2.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="resources/dist/css/skins/_all-skins.min.css">
@@ -63,7 +65,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">사장님 전용 <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">사장님 등록</a></li>
+                <li><a href="/myweb/StoreRegisterPage">사장님 등록</a></li>
                 <li><a href="/myweb/ceo">나의 가게 관리</a></li>
                 <!-- 
                 <li class="divider"></li>

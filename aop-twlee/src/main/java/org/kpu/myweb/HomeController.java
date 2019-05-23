@@ -48,9 +48,17 @@ public class HomeController {
 
 	}
 	
+	@RequestMapping(value = "/ceo", method = RequestMethod.GET)
+	public String ceohome(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+
+		return "/Ceo/ceohome";
+
+	}
 	@RequestMapping(value="/access_denied_page")
     public String accessDeniedPage() throws Exception {
 		
-        return "/common/access_denied_page";
+        return "/Common/exception/access_denied_page";
     }
 }

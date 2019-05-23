@@ -1,10 +1,7 @@
 package org.kpu.myweb.ceo.persistence;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
-import org.kpu.myweb.domain.StudentVO;
+import org.kpu.myweb.ceo.domain.StoreVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +12,13 @@ public class StoreDAOImpl implements StoreDAO {
 	private SqlSession sqlSession;
 	private static final String namespace ="org.kpu.myweb.StoreMapper";
 	
+	
+	/*
+	 * 가게 등록
+	 * 
+	 */
+	public int StoreRegister(StoreVO vo) {
+		
+		return sqlSession.insert(namespace + ".StoreRegister", vo);
+	}
 }

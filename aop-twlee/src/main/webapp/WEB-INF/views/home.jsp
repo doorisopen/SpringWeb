@@ -240,7 +240,7 @@
 	              <div class="tab-pane" id="glyphicons">
 	                <ul class="bs-glyphicons">
 	                  <li>
-	                  	<a href="#">
+	                  	<a href="/myweb/StoreList">
 	                    	<span class="glyphicon glyphicon-picture"></span>
 	                    	<span class="glyphicon-class">한식</span>
 	                    </a>
@@ -342,7 +342,7 @@
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
-      'paging'      : true,
+      'paging'      : false,
       'lengthChange': false,
       'searching'   : false,
       'ordering'    : true,

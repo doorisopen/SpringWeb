@@ -63,7 +63,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-warning">Register</button>
               </div>
             </form>
           </div>
