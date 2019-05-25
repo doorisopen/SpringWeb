@@ -53,5 +53,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userDAO.UserDelete(id);
 	}
-
+	/*
+	 * 사용자 권한 수정
+	 * 
+	 */
+	public void UserAuthorityUpdate(UserVO vo) {
+		// TODO Auto-generated method stub
+		userDAO.UserAuthorityUpdate(vo);
+	}
 }

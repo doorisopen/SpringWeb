@@ -33,8 +33,6 @@ function fn_userIDCheck() {
 			error: function(xhr, type, error) {
 				alert("network error occur");
 				console.log('log : ' + type)
-	        	console.log('log : ' + xhr)
-	        	console.log('message = ' + xhr.responseText)
 			},
 			
 			success: function (result) {

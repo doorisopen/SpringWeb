@@ -11,11 +11,12 @@
         <http pattern="/resources/**" security="none"></http>
 
         <http auto-config="true" use-expressions="true">
-        	<intercept-url pattern="/**" access="permitAll"/>
-        	<intercept-url pattern="/myweb/*" access="permitAll"/>
+        	<intercept-url pattern="/ceo" access="hasAnyRole('ROLE_CEO, ROLE_ADMIN')"/>
+		    <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
+        	<intercept-url pattern="/StoreRegisterPage" access="hasRole('ROLE_USER')"/>
 		    <intercept-url pattern="/loginPage" access="permitAll"/>
 		    <intercept-url pattern="/registerPage" access="permitAll"/>
-		    <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
+		    
 		    
 		     
 		    <!--

@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="_csrf" content="${_csrf.token}"/>
+  <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav">
@@ -25,9 +30,9 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="resources/dist/img/user4-128x128.jpg" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="resources/dist/img/default-50x50.gif" alt="User profile picture">
 
-              <h3 class="profile-username text-center"><sec:authentication property="principal.username"/></h3>
+              <h3 class="profile-username text-center">${userDetail.userNickName}</h3>
 
               <p class="text-muted text-center">님 반갑습니다.</p>
 
@@ -92,66 +97,18 @@
               
               <!-- /.tab-pane -->
               <div class="tab-pane" id="timeline">
-                <!-- The timeline -->
-                <ul class="timeline timeline-inverse">
-                  <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-red">
-                          10 Feb. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  
-          
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-comments bg-yellow"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                      <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                      <div class="timeline-body">
-                        Take me to your leader!
-                        Switzerland is small and neutral!
-                        We are more like Germany, ambitious and misunderstood!
-                      </div>
-                      <div class="timeline-footer">
-                        <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                        <a class="btn btn-primary btn-xs">Read more</a>
-                        <a class="btn btn-danger btn-xs">Delete</a>
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-green">
-                          3 Jan. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-camera bg-purple"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                      <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                      <div class="timeline-body">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        	ㅇㅇㅁㄴㅇㄴㅁㅇㅁㄴㄴㅁㅇㅁㄴㅇㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㄴㅁ
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <li>
-                    <i class="fa fa-clock-o bg-gray"></i>
-                  </li>
+              	<!-- The timeline -->
+                <ul class="timeline timeline-inverse" id="reviewList">
+                
+                	<!-- Review List -->
+                	
                 </ul>
+                	
+				<!-- Review Form -->
+				<form:form id="reviewRegisterForm" name="reviewRegisterForm">
+				    <input type="hidden" id="storeName" name="storeName" value="${storeDetail.storeName}" />
+				    <input type="hidden" id="userId" name="userId" value="${userDetail.userId}" />
+				</form:form>
               </div>
               <!-- /.tab-pane -->
 
@@ -161,7 +118,7 @@
                     <label for="userId" class="col-sm-2 control-label">ID</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="userId" name="userId" value="${userDetail.userId}" placeholder="ID">
+                      <input type="email" class="form-control" id="userId" name="userId" value="${userDetail.userId}" placeholder="ID" disabled>
                     </div>
                   </div>
                   <div class="form-group">
@@ -231,5 +188,74 @@
 
 </div>
 <!-- /.wrapper -->
+<script>
+
+/**
+ * 초기 페이지 로딩시 댓글 불러오기
+ */
+$(function(){
+    
+	getReviewList();
+    
+});
+ 
+/**
+ * 댓글 불러오기(Ajax)
+ */
+function getReviewList(){
+	var token = $("meta[name='_csrf']").attr("content");
+  	var header = $("meta[name='_csrf_header']").attr("content");
+  	var userId = '${userDetail.userId}';
+  	
+    $.ajax({
+        type:'POST',
+        url : '/myweb/UserProfileReviewList',
+        dataType : "json",
+        data:$("#reviewRegisterForm").serialize(),
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+        beforeSend : function(xhr)
+        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+            xhr.setRequestHeader(header, token, userId);
+        },
+        success : function(data){
+            
+            var html = "";
+            var cCnt = data.length;
+            
+            if(data.length > 0){
+                
+                for(i=0; i<data.length; i++){
+                    html += "<li class='time-label'><span class='bg-red'>"+data[i].writeDate+"</span></li>";
+                    html += "<li><i class='fa fa-comments bg-yellow'></i>";
+                    html += "<div class='timeline-item'><span class='time'><i class='fa fa-clock-o'></i>"+data[i].writeDate+"</span>";
+                    html += "<h3 class='timeline-header'><a href='#'>"+data[i].storeName+"</a></h3>";
+                    html += "<div class='timeline-body'>"+data[i].reviewContent+"</div>";
+                    html += "<div class='timeline-footer'>";
+                    html += "<a class='btn btn-danger btn-flat btn-xs'>삭제</a>";
+                    html += "<a class='btn btn-warning btn-flat btn-xs'>수정</a>";
+                    html += "<a class='btn btn-success btn-flat btn-xs'>Read More</a></div><li>"
+                }
+                
+            } else {
+                
+            	html += "<li class='time-label'><span class='bg-red'>Date Line</span></li>";
+                html += "<li><i class='fa fa-comments bg-yellow'></i>";
+                html += "<div class='timeline-item'>";
+                html += "<div class='timeline-body'>등록된 리뷰가 없습니다.</div></div><li>";
+       
+            }
+            
+            $("#cCnt").html(cCnt);
+            $("#reviewList").html(html);
+            
+        },
+        error:function(request,status,error){
+            
+       }
+        
+    });
+}
+ 
+</script>
 </body>
 </html>

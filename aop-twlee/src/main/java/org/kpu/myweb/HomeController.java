@@ -6,8 +6,10 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.kpu.myweb.controller.BoardController;
+import org.kpu.myweb.ceo.domain.StoreVO;
+import org.kpu.myweb.ceo.service.StoreService;
 import org.kpu.myweb.domain.BoardVO;
+import org.kpu.myweb.domain.UserVO;
 import org.kpu.myweb.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +28,10 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired
-	BoardService service;
+	BoardService boardservice;
+	
+	@Autowired
+	StoreService storeservice;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -41,7 +46,7 @@ public class HomeController {
 		 */
 		BoardVO vo = new BoardVO();
 		vo.setBoardFlag("not");
-		List<BoardVO> noticeList = service.BoardList(vo);
+		List<BoardVO> noticeList = boardservice.BoardList(vo);
 		model.addAttribute("notice", noticeList);
 		
 		return "home";
@@ -51,9 +56,16 @@ public class HomeController {
 	@RequestMapping(value = "/ceo", method = RequestMethod.GET)
 	public String ceohome(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
+		UserVO uservo = new UserVO();
+		StoreVO storevo = new StoreVO();
 		
+		String writer = uservo.getSecurityUser();
+		storevo.setWriter(writer);
 
-		return "/Ceo/ceohome";
+		List<StoreVO> CeoStoreList = storeservice.CeoStoreList(storevo);
+		model.addAttribute("ceoStoreList", CeoStoreList);
+		
+		return "/Ceo/ceoHome";
 
 	}
 	@RequestMapping(value="/access_denied_page")

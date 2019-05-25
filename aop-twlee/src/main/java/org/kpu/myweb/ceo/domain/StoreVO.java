@@ -7,6 +7,12 @@ public class StoreVO {
 	private String storeAddress;
 	private String storeTel;
 	private String storeCategory;
+	/*
+	 * 	Store Category Flag
+	 * 	han-한식, bun-분식, caf-카페 디저트, jpn-돈까스 회 일식, chi-치킨, piz-피자, 
+	 *  cha-중국집, jog-족발 보쌈, yas-야식, dos-도시락, fas-패스트푸드
+	 * 
+	 */
 	private int orderCount;
 	private int reviewCount;
 	private int goodCount;

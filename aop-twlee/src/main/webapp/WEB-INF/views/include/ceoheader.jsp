@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +39,10 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
+<%
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    Object principal = auth.getPrincipal();
+%>
 <body>
 <!-- Main Header -->
   <header class="main-header">
@@ -61,7 +71,7 @@
               <!-- The user image in the navbar-->
               <img src="resources/dist/img/default-50x50.gif" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">userName</span>
+              <span class="hidden-xs"><sec:authentication property="principal.username"/></span>
             </a>
           </li>
           <!-- Control Sidebar Toggle Button -->
@@ -85,7 +95,7 @@
           <img src="resources/dist/img/default-50x50.gif" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>userName</p>
+          <p><sec:authentication property="principal.username"/></p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -95,8 +105,9 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Nav</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li class="active"><a href="/myweb/ceo"><i class="fa fa-link"></i> <span>Ceo Home</span></a></li>
+        
+        <!--  
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">
@@ -108,6 +119,7 @@
             <li><a href="#">Link in level 2</a></li>
           </ul>
         </li>
+        -->
       </ul>
       <!-- /.sidebar-menu -->
     </section>

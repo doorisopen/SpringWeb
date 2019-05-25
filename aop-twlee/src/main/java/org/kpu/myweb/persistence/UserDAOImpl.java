@@ -65,6 +65,12 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		sqlSession.delete(namespace + ".UserDelete", id);
 	}
-	
-
+	/*
+	 * 사용자 권한 수정
+	 *
+	 */
+	public void UserAuthorityUpdate(UserVO vo) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace + ".UserAuthorityUpdate", vo);
+	}
 }

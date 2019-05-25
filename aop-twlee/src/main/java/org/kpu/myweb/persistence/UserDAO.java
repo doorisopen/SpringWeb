@@ -11,4 +11,6 @@ public interface UserDAO {
 	public UserVO UserDetail(String userId);
 	public void UserUpdate(UserVO vo);
 	public void UserDelete(String id);
+	public void UserAuthorityUpdate(UserVO vo);
+	
 }

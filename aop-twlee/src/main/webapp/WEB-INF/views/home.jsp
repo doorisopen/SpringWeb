@@ -217,7 +217,7 @@
 		            <div class="box-footer">
 			            <ul class="list-inline">
 			            	<li><a href="#" class="link-black text-sm">아이디/비밀번호 찾기</a></li>
-			            	<li class="pull-right"><a href="/myweb/register" class="link-black text-sm">회원가입</a></li>
+			            	<li class="pull-right"><a href="/myweb/registerPage" class="link-black text-sm">회원가입</a></li>
 			            </ul>
 		            </div>
 	            </sec:authorize>
@@ -240,73 +240,73 @@
 	              <div class="tab-pane" id="glyphicons">
 	                <ul class="bs-glyphicons">
 	                  <li>
-	                  	<a href="/myweb/StoreList">
+	                  	<a href="/myweb/StoreList?storeCategory=han">
 	                    	<span class="glyphicon glyphicon-picture"></span>
 	                    	<span class="glyphicon-class">한식</span>
 	                    </a>
 	                  </li>
 	                  <li>
-	                  	<a href="#">
+	                  	<a href="/myweb/StoreList?storeCategory=bun">
 	                    	<span class="glyphicon glyphicon-picture"></span>
 	                    	<span class="glyphicon-class">분식</span>
 	                    </a>
 	                  </li>
 	                  <li>
-	                  <a href="#">
+	                  <a href="/myweb/StoreList?storeCategory=caf">
 	                   		<span class="glyphicon glyphicon-picture"></span>
 	                    	<span class="glyphicon-class">카페 디저트</span>
 	                    </a>
 	                  </li>
 	                  <li>
-	                  <a href="#">
+	                  <a href="/myweb/StoreList?storeCategory=jpn">
 	                    	<span class="glyphicon glyphicon-picture"></span>
 	                    	<span class="glyphicon-class">돈까스 회 일식</span>
 	                    </a>
 	                  </li>
 	                  <li>
-	                  	<a href="#">
+	                  	<a href="/myweb/StoreList?storeCategory=chi">
 	                    	<span class="glyphicon glyphicon-picture"></span>
 	                    	<span class="glyphicon-class">치킨</span>
 	                    </a>
 	                  </li>
 	                  <li>
-		                <a href="#">
+		                <a href="/myweb/StoreList?storeCategory=piz">
 		                	<span class="glyphicon glyphicon-picture"></span>
 		                	<span class="glyphicon-class">피자</span>
 	                    </a>
 	                  </li>
 	                  <li>
-	                  	<a href="#">
+	                  	<a href="/myweb/StoreList?storeCategory=cha">
 	                    	<span class="glyphicon glyphicon-picture"></span>
 	                    	<span class="glyphicon-class">중국집</span>
 	                    </a>
 	                  </li>
 	                  <li>
-	                  	<a href="#">
+	                  	<a href="/myweb/StoreList?storeCategory=jog">
 	                    	<span class="glyphicon glyphicon-picture"></span>
 	                    	<span class="glyphicon-class">족발 보쌈</span>
 	                    </a>
 	                  </li>
 	                  <li>
-	                  	<a href="#">
+	                  	<a href="/myweb/StoreList?storeCategory=yas">
 		                    <span class="glyphicon glyphicon-picture"></span>
 		                    <span class="glyphicon-class">야식</span>
 	                    </a>
 	                  </li>
 	                  <li>
-	                  	<a href="#">
+	                  	<a href="/myweb/StoreList?storeCategory=zzi">
 		                    <span class="glyphicon glyphicon-picture"></span>
 		                    <span class="glyphicon-class">찜 탕</span>
 	                    </a>
 	                  </li>
 	                  <li>
-	                  	<a href="#">
+	                  	<a href="/myweb/StoreList?storeCategory=dos">
 		                    <span class="glyphicon glyphicon-picture"></span>
 		                    <span class="glyphicon-class">도시락</span>
 	                    </a>
 	                  </li>
 	                  <li>
-		                <a href="#">
+		                <a href="/myweb/StoreList?storeCategory=fas">
 		                	<span class="glyphicon glyphicon-picture"></span>
 		                    <span class="glyphicon-class">패스트푸드</span>
 	                    </a>

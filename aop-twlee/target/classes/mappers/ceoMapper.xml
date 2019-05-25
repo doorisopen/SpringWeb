@@ -22,5 +22,69 @@
   		 #{writer}
   		)
 	</insert>
-
+	
+	<!-- 카테고리별 가게 리스트 -->
+    <select id="StoreList" resultType="StoreVO">
+ 	 <![CDATA[
+ 		SELECT
+ 			* 
+ 		FROM 
+ 			aop_store
+ 		WHERE
+ 			storeCategory = #{storeCategory}
+ 	 ]]> 
+ 	</select>
+ 	
+ 	<!-- 사장님 가게 리스트 -->
+    <select id="CeoStoreList" resultType="StoreVO">
+ 	 <![CDATA[
+ 		SELECT
+ 			* 
+ 		FROM 
+ 			aop_store
+ 		WHERE
+ 			writer = #{writer}
+ 	 ]]> 
+ 	</select>
+ 	
+ 	<!-- 가게 프로필 조회 -->
+    <select id="StoreDetail" resultType="StoreVO">
+ 		SELECT
+ 			* 
+ 		FROM 
+ 		 	aop_store 
+ 		WHERE 
+ 			storeName = #{storeName}
+ 	</select>
+ 	<!-- 
+ 	
+ 	UPDATE  테이블1 AS a, 테이블2 AS b
+      SET  a.column_name = value,
+              b.column_name = value
+﻿ WHERE  a.조건컬럼 = value
+      AND  b.조건컬럼 = value
+ 	
+ 	
+ 	 -->
+ 	<!-- 가게 프로필 수정 -->
+    <update id="StoreUpdate">
+		 UPDATE 
+		 	aop_store 
+		 SET 
+		 	storeName = #{storeName}
+		 	, storeAddress = #{storeAddress}
+		 	, storeTel = #{storeTel}
+		 WHERE 
+		 	writer = #{writer}
+ 	</update>
+ 	
+ 	<!-- 가게 탈퇴 -->
+    <delete id="StoreDelete">
+ 		DELETE 
+ 		FROM 
+ 			aop_store 
+ 		WHERE 
+ 			writer = #{writer}
+ 	</delete>
+ 	
 </mapper>

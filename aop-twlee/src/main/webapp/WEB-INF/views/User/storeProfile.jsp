@@ -15,7 +15,7 @@
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
 <!-- Header.jsp -->
-  <%@include file="../../include/header.jsp"%>
+  <%@include file="../include/header.jsp"%>
 	<!-- /.Header.jsp -->
 	
   <!-- Full Width Column -->
@@ -34,7 +34,7 @@
 
               <h3 class="profile-username text-center">${storeDetail.storeName }</h3>
 
-              <p class="text-muted text-center">사장님 관리 페이지입니다.</p>
+              <p class="text-muted text-center">방문 해주셔서 감사합니다.</p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
@@ -108,7 +108,7 @@
               <!-- /.tab-pane -->
 
               <div class="tab-pane" id="settings">
-                <form:form class="form-horizontal" action="/myweb/UserUpdate" method="POST">
+                <form:form class="form-horizontal">
                   <div class="form-group">
                     <label for="storeName" class="col-sm-2 control-label">가게 이름</label>
 
@@ -120,14 +120,14 @@
                     <label for="storeAddress" class="col-sm-2 control-label">가게 주소</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="storeAddress" name="storeAddress" value="${storeDetail.storeAddress}" placeholder="storeAddress">
+                      <input type="text" class="form-control" id="storeAddress" name="storeAddress" value="${storeDetail.storeAddress}" placeholder="storeAddress" disabled>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="storeTel" class="col-sm-2 control-label">전화번호</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="storeTel" name="storeTel" value="${storeDetail.storeTel}" placeholder="storeTel">
+                      <input type="text" class="form-control" id="storeTel" name="storeTel" value="${storeDetail.storeTel}" placeholder="storeTel" disabled>
                     </div>
                   </div>
                   <div class="form-group">
@@ -135,13 +135,6 @@
 
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="writeDate" name="writeDate" value="${storeDetail.writeDate}" placeholder="writeDate" disabled>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                    	<ul class="list-inline">
-                   			<li class="pull-right"><button type="submit" class="btn btn-warning pull-right">Submit</button></li>
-                  		</ul>
                     </div>
                   </div>
                 </form:form>
@@ -164,11 +157,11 @@
   <!-- /.content-wrapper -->
   
   <!-- Footer.jsp -->
-<%@include file="../../include/footer.jsp"%>
+<%@include file="../include/footer.jsp"%>
 <!-- /.Footer.jsp -->
-
 </div>
 <!-- /.wrapper -->
+
 <script>
 /*
  * 댓글 등록하기(Ajax)
@@ -217,7 +210,7 @@ function getReviewList(){
   	
     $.ajax({
         type:'POST',
-        url : '/myweb/CeoStoreProfileReviewList',
+        url : '/myweb/StoreProfileReviewList',
         dataType : "json",
         data:$("#reviewRegisterForm").serialize(),
         contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
@@ -237,9 +230,7 @@ function getReviewList(){
                     html += "<li><i class='fa fa-comments bg-yellow'></i>";
                     html += "<div class='timeline-item'><span class='time'><i class='fa fa-clock-o'></i>"+data[i].writeDate+"</span>";
                     html += "<h3 class='timeline-header'><a href='#'>"+data[i].writer+"</a></h3>";
-                    html += "<div class='timeline-body'>"+data[i].reviewContent+"</div>";
-                    html += "<div class='timeline-footer'>";
-                    html += "<a class='btn btn-danger btn-flat btn-xs'>삭제</a></div><li>";
+                    html += "<div class='timeline-body'>"+data[i].reviewContent+"</div><li>";
                     
                 }
                 

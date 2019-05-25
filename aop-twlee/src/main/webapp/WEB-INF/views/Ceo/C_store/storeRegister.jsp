@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                 <label>Category</label>
-	                <select name="category" class="form-control select2" style="width: 100%;">
+	                <select name="storeCategory" class="form-control select2" style="width: 100%;">
 	                  <option selected="selected">카테고리를 선택해주세요</option>
 	                  <option value="han">한식 (등록 테스트)</option>
 	                  <option value="sna">분식 (등록 테스트)</option>

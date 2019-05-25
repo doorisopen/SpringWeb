@@ -32,6 +32,6 @@
 
 	<context:component-scan base-package="org.kpu.myweb"/>
 	<context:component-scan base-package="org.kpu.myweb.controller"/>
-	<context:component-scan base-package="org.kpu.myweb.ceo.controller"/>
+	<context:component-scan base-package="org.kpu.myweb.ceo.controller.StoreController"/>
 	
 </beans:beans>

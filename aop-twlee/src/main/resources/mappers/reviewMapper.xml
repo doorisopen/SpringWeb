@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.kpu.myweb.ReviewMapper">
+
+	
+	<!-- 사용자 프로필 리뷰 목록 -->
+	<select id="UserProfileReviewList" resultType="ReviewVO">
+        SELECT
+            *
+        FROM 
+        	aop_review
+        WHERE
+        	writer = #{writer}
+    </select>
+    
+    <!-- 가게 전체 리뷰 목록 -->
+	<select id="StoreProfileReviewList" resultType="ReviewVO">
+        SELECT
+            *
+        FROM 
+        	aop_review
+        WHERE
+        	storeName = #{storeName}
+    </select>
+    
+    <!-- 사장님 리뷰 관리 목록 -->
+	<select id="CeoStoreProfileReviewList" resultType="ReviewVO">
+        SELECT
+            *
+        FROM 
+        	aop_review
+        WHERE
+        	storeName = #{storeName}
+    </select>
+	
+	<!-- 리뷰 등록 -->
+	<insert id="ReviewRegister" parameterType="ReviewVO">
+        INSERT INTO
+        aop_review (
+        	reviewIdx
+        	, storeName
+        	, reviewContent
+        	, writer
+        	, writeDate
+        )VALUES(
+        	#{reviewIdx}
+        	,#{storeName}
+        	,#{reviewContent}
+       		,#{writer}
+        	,now()
+        ) 
+    </insert>
+    
+	
+    <!-- 리뷰 수정 -->
+    <update id="ReviewUpdate" parameterType="ReviewVO">
+        UPDATE 
+        	aop_review
+        SET
+            reviewContent = #{reviewContent}
+        WHERE 
+        	reviewIdx = #{reviewIdx}
+    </update>
+    
+    <!-- 리뷰 삭제 -->
+    <delete id="ReviewDelete" parameterType="int">
+        DELETE 
+        FROM 
+        	aop_review 
+        WHERE 
+        	reviewIdx = #{reviewIdx}
+    </delete>
+	
+ 	
+</mapper>

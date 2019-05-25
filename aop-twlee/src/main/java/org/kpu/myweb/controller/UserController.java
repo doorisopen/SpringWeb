@@ -127,7 +127,7 @@ public class UserController {
 	 * 
 	 */
     @RequestMapping(value = "/UserUpdate", method = RequestMethod.POST)
-    public String modifyMemberPost(HttpServletRequest request, UserVO vo) throws Exception {
+    public String UserUpdate(HttpServletRequest request, UserVO vo) throws Exception {
     	
     	System.out.println("userId : "+ request.getParameter("userId"));
     	System.out.println("userPw : "+ request.getParameter("userPw"));

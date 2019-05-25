@@ -8,5 +8,11 @@ import org.kpu.myweb.domain.StudentVO;
 public interface StoreDAO {
 	
 	public int StoreRegister(StoreVO vo) throws Exception;
-
+	public List<StoreVO> StoreList(StoreVO vo) throws Exception;
+	public List<StoreVO> CeoStoreList(StoreVO vo) throws Exception;
+	public StoreVO StoreDetail(String storeName) throws Exception;
+	public void StoreUpdate(StoreVO vo) throws Exception;
+	public void StoreDelete(String id) throws Exception;
+	public void updateReplyCnt(int storeIdx, int i);
+	List<StoreVO> listPaging(int page) throws Exception;
 }
