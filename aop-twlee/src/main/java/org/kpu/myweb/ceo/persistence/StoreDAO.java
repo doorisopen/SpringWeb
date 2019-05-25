@@ -3,6 +3,7 @@ package org.kpu.myweb.ceo.persistence;
 import java.util.List;
 
 import org.kpu.myweb.ceo.domain.StoreVO;
+import org.kpu.myweb.domain.ReviewVO;
 import org.kpu.myweb.domain.StudentVO;
 
 public interface StoreDAO {
@@ -13,6 +14,6 @@ public interface StoreDAO {
 	public StoreVO StoreDetail(String storeName) throws Exception;
 	public void StoreUpdate(StoreVO vo) throws Exception;
 	public void StoreDelete(String id) throws Exception;
-	public void updateReplyCnt(int storeIdx, int i);
+	public void updateReplyCnt(String storeName, int i);
 	List<StoreVO> listPaging(int page) throws Exception;
 }

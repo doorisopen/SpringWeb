@@ -114,6 +114,7 @@
 
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="storeName" name="storeName" value="${storeDetail.storeName}" placeholder="storeName" disabled>
+                      <input type="hidden" class="form-control" id="storeName" name="storeName" value="${storeDetail.storeName}">
                     </div>
                   </div>
                   <div class="form-group">

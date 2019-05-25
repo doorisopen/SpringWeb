@@ -65,6 +65,7 @@ public class StoreController {
 		String storeCategory = request.getParameter("storeCategory");
 		System.out.println("StoreList Category = " + storeCategory);
 		
+		
 		List<StoreVO> storeList = service.StoreList(vo);
 		model.addAttribute("storeList", storeList);
 		

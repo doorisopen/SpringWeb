@@ -74,5 +74,14 @@
         	reviewIdx = #{reviewIdx}
     </delete>
 	
+	<!-- 댓글의 게시글 이름 조회 -->
+	<select id="getStoreName" resultType="string">
+        SELECT
+            storeName
+        FROM 
+        	aop_review
+        WHERE
+        	reviewIdx = #{reviewIdx}
+    </select>
  	
 </mapper>

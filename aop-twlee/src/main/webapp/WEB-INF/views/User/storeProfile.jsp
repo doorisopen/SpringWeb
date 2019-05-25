@@ -95,7 +95,7 @@
                 </ul>
                 	
 				<!-- Review Form -->
-				<form:form id="reviewRegisterForm" name="reviewRegisterForm">
+				<form:form id="reviewRegisterForm" name="reviewRegisterForm" method="GET">
 					<div class="input-group">
 				    	<input type="text" class="form-control" id="reviewContent" name="reviewContent" placeholder="내용을 입력하세요.">
 				        	<span class="input-group-btn">
@@ -170,7 +170,7 @@ function fn_review(){
 	var token = $("meta[name='_csrf']").attr("content");
   	var header = $("meta[name='_csrf_header']").attr("content");
     $.ajax({
-        type:'POST',
+        type:'get',
         url : '/myweb/ReviewRegister',
         data:$("#reviewRegisterForm").serialize(),
         beforeSend : function(xhr)
@@ -209,7 +209,7 @@ function getReviewList(){
   	var storeName = '${storeDetail.storeName}';
   	
     $.ajax({
-        type:'POST',
+        type:'get',
         url : '/myweb/StoreProfileReviewList',
         dataType : "json",
         data:$("#reviewRegisterForm").serialize(),

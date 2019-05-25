@@ -118,7 +118,8 @@
                     <label for="userId" class="col-sm-2 control-label">ID</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="userId" name="userId" value="${userDetail.userId}" placeholder="ID" disabled>
+                      <input type="email" class="form-control"value="${userDetail.userId}" placeholder="ID" disabled>
+                      <input type="hidden" class="form-control" id="userId" name="userId" value="${userDetail.userId}">
                     </div>
                   </div>
                   <div class="form-group">

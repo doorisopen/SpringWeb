@@ -61,7 +61,7 @@
  	UPDATE  테이블1 AS a, 테이블2 AS b
       SET  a.column_name = value,
               b.column_name = value
-﻿ WHERE  a.조건컬럼 = value
+﻿ 	WHERE  a.조건컬럼 = value
       AND  b.조건컬럼 = value
  	
  	
@@ -86,5 +86,15 @@
  		WHERE 
  			writer = #{writer}
  	</delete>
+ 	
+ 	<!-- 가게 댓글 수 갱신 -->
+    <update id="updateReplyCnt">
+		 UPDATE 
+		 	aop_store 
+		 SET 
+		 	reviewCount = #{reviewCount}
+		 WHERE 
+		 	storeName = #{storeName}
+ 	</update>
  	
 </mapper>

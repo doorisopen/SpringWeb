@@ -92,11 +92,11 @@ public class StoreDAOImpl implements StoreDAO {
     }
 	
 	@Override
-	public void updateReplyCnt(int storeIdx, int amount) {
+	public void updateReplyCnt(String storeName, int amount) {
 		// TODO Auto-generated method stub
 		Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("articleNo", storeIdx);
-        paramMap.put("amount", amount);
+        paramMap.put("storeName", storeName);
+        paramMap.put("reviewCount", amount);
 
         sqlSession.update(namespace + ".updateReplyCnt", paramMap);
 	}

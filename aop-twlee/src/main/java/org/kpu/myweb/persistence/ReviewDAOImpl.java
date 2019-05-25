@@ -19,11 +19,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 	private static final String namespace ="org.kpu.myweb.ReviewMapper";
 
 	@Override
-	public int ReviewCount() throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
 	public List<ReviewVO> CeoStoreProfileReviewList(ReviewVO vo) throws Exception {
 		// TODO Auto-generated method stub ReviewList
 		List<ReviewVO> reviewList = new ArrayList<ReviewVO>();
@@ -62,8 +57,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	
+	@Override
+	public String getStoreName(int reviewIdx) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".getStoreName", reviewIdx);
+	}
 	
 	/*
 	 * 리뷰 등록

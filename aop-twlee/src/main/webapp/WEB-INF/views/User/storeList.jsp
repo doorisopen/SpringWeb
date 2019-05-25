@@ -37,10 +37,11 @@
 					            		<img src="resources/dist/img/default-50x50.gif" alt="Product Image">
 					            	</div>
 					                  <div class="product-info">
+					                  <!--  -->
 						                    <a href="/myweb/StoreDetail?storeName=${storeList.storeName}" class="product-title">${storeList.storeName}
-						                    	<!--  <span class="label label-success pull-right">리뷰 ${storeList.reviewCount}</span> -->
+						                    	<span class="label label-success pull-right">리뷰 ${storeList.reviewCount}</span>
 						                    	<span class="product-description">${storeList.storeAddress}</span>
-						                    	<!--  <span class="label label-info pull-right">좋아요 ${storeList.goodCount}</span> -->
+						                    	<span class="label label-info pull-right">좋아요 ${storeList.goodCount}</span>
 						                  	</a>
 						                  	
 					                  	

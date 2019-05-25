@@ -212,9 +212,9 @@ public class ReviewController {
     
     @RequestMapping("/ReviewDelete/{reviewIdx}") //댓글 삭제  
     @ResponseBody
-    private int ReviewDelete(@PathVariable int reviewIdx) throws Exception{
+    private void ReviewDelete(@PathVariable int reviewIdx) throws Exception{
         
-        return service.ReviewDelete(reviewIdx);
+        service.ReviewDelete(reviewIdx);
     }
 
 	
