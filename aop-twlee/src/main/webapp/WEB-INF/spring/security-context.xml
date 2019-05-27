@@ -48,7 +48,6 @@
     error-page="/access_denied_page"
 	/>
 	</http>
-	 
         <authentication-manager>
             <authentication-provider>
             
@@ -73,7 +72,6 @@
 	                 							WHERE 
 	                 								userId = ?" 		
 	                 />
-
             </authentication-provider>
         </authentication-manager>
 		 

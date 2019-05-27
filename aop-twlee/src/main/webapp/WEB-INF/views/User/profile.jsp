@@ -63,8 +63,9 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
-                <!-- Post -->
                 <div class="post">
+                	 미구현 상태입니다.
+                <!-- Post
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="resources/dist/img/user1-128x128.jpg" alt="user image">
                         <span class="username">
@@ -73,7 +74,7 @@
                         </span>
                     <span class="description">Shared publicly - 7:30 PM today</span>
                   </div>
-                  <!-- /.user-block -->
+                  /.user-block 
                   <p>
                     Lorem ipsum represents a long-held tradition for designers,
                     typographers and the like. Some people hate it and argue for
@@ -91,8 +92,9 @@
                   </ul>
 
                   <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                -->
                 </div>
-                <!-- /.post -->
+                
               </div>
               
               <!-- /.tab-pane -->

@@ -14,7 +14,6 @@ import org.springframework.util.StopWatch;
 public class MyAspect {
 
 	private static final Logger logger = LoggerFactory.getLogger(MyAspect.class);
-	
 	/*
 	 *  DAO의 쿼리 수행시간 측정 하기
 	 */
@@ -40,27 +39,27 @@ public class MyAspect {
 		
 		// 실행시간은 로그로 남기는 것이 좋지만, 여기서는 콘솔창에 찍도록 한다.
 		System.out.println("[ExecutionTime] " + taskName + " , " + total + "(ms)");
-		
-		
-		/* 각계층의 실행 로그 출력 하기
-		 * 
-		String type = pjp.getSignature().getDeclaringTypeName();
-		String name = "";
-		
-		if(type.contains("Controller")) {
-			name = "Controller : ";
-		} else if(type.contains("Service")) {
-			name = "Service : ";
-		} else if(type.contains("DAO")) {
-			name = "Persistence : ";
-		}
-		long end = System.currentTimeMillis();
-		
-		logger.info(name + type + "."+pjp.getSignature().getName() + "()");
-		logger.info("Argument/Parameter : " +Arrays.toString(pjp.getArgs()));
-		logger.info("Running Time :" +(end-start));
-		logger.info("-----------------------------------------------------");
-		*/
+	
 		return result;
 	}
 }
+
+/* 각계층의 실행 로그 출력 하기
+ * 
+String type = pjp.getSignature().getDeclaringTypeName();
+String name = "";
+
+if(type.contains("Controller")) {
+	name = "Controller : ";
+} else if(type.contains("Service")) {
+	name = "Service : ";
+} else if(type.contains("DAO")) {
+	name = "Persistence : ";
+}
+long end = System.currentTimeMillis();
+
+logger.info(name + type + "."+pjp.getSignature().getName() + "()");
+logger.info("Argument/Parameter : " +Arrays.toString(pjp.getArgs()));
+logger.info("Running Time :" +(end-start));
+logger.info("-----------------------------------------------------");
+*/

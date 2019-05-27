@@ -66,23 +66,19 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
-                <ul class="products-list product-list-in-box">
+                <ul class="products-list product-list-in-box" id="menuList">
                 
-	                <li class="item">
-	                  <div class="product-img">
-	                    <img src="resources/dist/img/default-50x50.gif" alt="Product Image">
-	                  </div>
-	                  <div class="product-info">
-	                    <a href="javascript:void(0)" class="product-title">Samsung TV
-	                      <span class="label label-warning pull-right">$1800</span></a>
-	                    <span class="product-description">
-	                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-	                        </span>
-	                  </div>
-	                </li>
-	                <!-- /.item -->
-	                
+                	<!-- Menu List -->
+                
 	              </ul>
+	              <!-- Menu Form -->
+				<form:form id="menuRegisterForm" name="menuRegisterForm">
+					<div class="input-group">
+				    	<input type="hidden" class="form-control" id="menuName" name="menuName" placeholder="메뉴이름을 입력하세요.">
+				    	<input type="hidden" class="form-control" id="menuPrice" name="menuPrice" placeholder="메뉴가격을 입력하세요.">
+					</div>
+				    <input type="hidden" id="storeName" name="storeName" value="${storeDetail.storeName}" />
+				</form:form>
               </div>
               
               <!-- /.tab-pane -->
@@ -195,11 +191,67 @@ function fn_review(){
  * 초기 페이지 로딩시 댓글 불러오기
  */
 $(function(){
-    
+	getMenuList();
 	getReviewList();
     
 });
- 
+
+/**
+ * 메뉴 리스트 불러오기(Ajax)
+ */
+function getMenuList(){
+	var token = $("meta[name='_csrf']").attr("content");
+  	var header = $("meta[name='_csrf_header']").attr("content");
+  	
+    $.ajax({
+        type:'GET',
+        url : '/myweb/StoreMenuList',
+        dataType : "json",
+        data:$("#menuRegisterForm").serialize(),
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+        beforeSend : function(xhr)
+        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+            xhr.setRequestHeader(header, token);
+        },
+        success : function(data){
+            
+            var html = "";
+            var mCnt = data.length;
+            
+            if(data.length > 0){
+                
+                for(i=0; i<data.length; i++){
+                    html += "<li class='item'><div class='product-img'>";
+                    html += "<img src='resources/dist/img/default-50x50.gif' alt='Product Image'></div>";
+                    html += "<div class='product-info'>";
+                    html += "<a href='#'  class='product-title'>"+data[i].menuName;
+                    html += "<span class='label label-warning pull-right'>$"+data[i].menuPrice+"</span></a>";
+                    html += "<span class='product-description'>Menu description</span></div></li>";
+                    
+                }
+
+            } else {
+                
+            	html += "<li class='item'><div class='product-img'>";
+                html += "<img src='resources/dist/img/default-50x50.gif' alt='Product Image'></div>";
+                html += "<div class='product-info'>";
+                html += "<a href='#'  class='product-title'>아직 등록된 메뉴가 없습니다.";
+                html += "<span class='label label-warning pull-right'>$0</span></a>";
+                html += "<span class='product-description'>등록된 메뉴설명이 없습니다.</span></div></li>";
+       
+            }
+            
+            $("#mCnt").html(mCnt);
+            $("#menuList").html(html);
+            
+        },
+        error:function(request,status,error){
+        	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+        
+    });
+}
+
 /**
  * 댓글 불러오기(Ajax)
  */

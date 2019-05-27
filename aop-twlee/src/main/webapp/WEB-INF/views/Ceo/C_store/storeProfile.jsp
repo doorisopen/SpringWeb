@@ -66,23 +66,26 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
-                <ul class="products-list product-list-in-box">
+              
+              
+                <ul class="products-list product-list-in-box" id="menuList">
                 
-	                <li class="item">
-	                  <div class="product-img">
-	                    <img src="resources/dist/img/default-50x50.gif" alt="Product Image">
-	                  </div>
-	                  <div class="product-info">
-	                    <a href="javascript:void(0)" class="product-title">Samsung TV
-	                      <span class="label label-warning pull-right">$1800</span></a>
-	                    <span class="product-description">
-	                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-	                        </span>
-	                  </div>
-	                </li>
-	                <!-- /.item -->
-	                
-	              </ul>
+	            	<!-- Menu List -->
+ 
+	            </ul>
+	            
+	            <!-- Menu Form -->
+				<form:form id="menuRegisterForm" name="menuRegisterForm" method="GET">
+					<div class="input-group">
+				    	<input type="text" class="form-control" id="menuName" name="menuName" placeholder="메뉴이름을 입력하세요.">
+				    	<input type="text" class="form-control" id="menuPrice" name="menuPrice" placeholder="메뉴가격을 입력하세요.">
+				        	<span class="input-group-btn">
+				            	<button onClick="fn_menu()" class="btn btn-default" name="menuRegisterBtn">등록</button>
+				        	</span>
+					</div>
+				    <input type="hidden" id="storeName" name="storeName" value="${storeDetail.storeName}" />
+				</form:form>
+				
               </div>
               
               <!-- /.tab-pane -->
@@ -95,7 +98,7 @@
                 </ul>
                 	
 				<!-- Review Form -->
-				<form:form id="reviewRegisterForm" name="reviewRegisterForm">
+				<form:form id="reviewRegisterForm" name="reviewRegisterForm" method="GET">
 					<div class="input-group">
 				    	<input type="text" class="form-control" id="reviewContent" name="reviewContent" placeholder="내용을 입력하세요.">
 				        	<span class="input-group-btn">
@@ -171,14 +174,111 @@
 </div>
 <!-- /.wrapper -->
 <script>
+
+/**
+ * 초기 페이지 로딩시 댓글 불러오기
+ */
+$(function(){
+	
+	getMenuList();
+	getReviewList();
+    
+});
+
+
 /*
+ * 메뉴 등록하기(Ajax)
+ */
+function fn_menu(){
+	var token = $("meta[name='_csrf']").attr("content");
+  	var header = $("meta[name='_csrf_header']").attr("content");
+    $.ajax({
+        type:'get',
+        url : '/myweb/MenuRegister',
+        data:$("#menuRegisterForm").serialize(),
+        beforeSend : function(xhr)
+        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+            xhr.setRequestHeader(header, token);
+        },
+        success : function(data){
+            if(data=="success")
+            {
+                getMenuList();
+                $("#menuName").val("");
+                $("#menuPrice").val("");
+            }
+        },
+        error:function(request,status,error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+       }
+        
+    });
+}
+ 
+ 
+/**
+ * 메뉴 리스트 불러오기(Ajax)
+ */
+function getMenuList(){
+	var token = $("meta[name='_csrf']").attr("content");
+  	var header = $("meta[name='_csrf_header']").attr("content");
+  	
+    $.ajax({
+        type:'GET',
+        url : '/myweb/StoreMenuList',
+        dataType : "json",
+        data:$("#menuRegisterForm").serialize(),
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+        beforeSend : function(xhr)
+        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+            xhr.setRequestHeader(header, token);
+        },
+        success : function(data){
+            
+            var html = "";
+            var mCnt = data.length;
+            
+            if(data.length > 0){
+                
+                for(i=0; i<data.length; i++){
+                    html += "<li class='item'><div class='product-img'>";
+                    html += "<img src='resources/dist/img/default-50x50.gif' alt='Product Image'></div>";
+                    html += "<div class='product-info'>";
+                    html += "<a href='#'  class='product-title'>"+data[i].menuName;
+                    html += "<span class='label label-warning pull-right'>$"+data[i].menuPrice+"</span></a>";
+                    html += "<span class='product-description'>Menu description</span></div></li>";
+                    
+                }
+
+            } else {
+                
+            	html += "<li class='item'><div class='product-img'>";
+                html += "<img src='resources/dist/img/default-50x50.gif' alt='Product Image'></div>";
+                html += "<div class='product-info'>";
+                html += "<a href='#'  class='product-title'>메뉴이름을 등록해주세요";
+                html += "<span class='label label-warning pull-right'>$0</span></a>";
+                html += "<span class='product-description'>등록된 메뉴설명이 없습니다.</span></div></li>";
+       
+            }
+            
+            $("#mCnt").html(mCnt);
+            $("#menuList").html(html);
+            
+        },
+        error:function(request,status,error){
+        	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+        
+    });
+}
+/*************************************************************************************
  * 댓글 등록하기(Ajax)
  */
 function fn_review(){
 	var token = $("meta[name='_csrf']").attr("content");
   	var header = $("meta[name='_csrf_header']").attr("content");
     $.ajax({
-        type:'POST',
+        type:'get',
         url : '/myweb/ReviewRegister',
         data:$("#reviewRegisterForm").serialize(),
         beforeSend : function(xhr)
@@ -200,15 +300,6 @@ function fn_review(){
 }
  
 /**
- * 초기 페이지 로딩시 댓글 불러오기
- */
-$(function(){
-    
-	getReviewList();
-    
-});
- 
-/**
  * 댓글 불러오기(Ajax)
  */
 function getReviewList(){
@@ -217,7 +308,7 @@ function getReviewList(){
   	var storeName = '${storeDetail.storeName}';
   	
     $.ajax({
-        type:'POST',
+        type:'get',
         url : '/myweb/CeoStoreProfileReviewList',
         dataType : "json",
         data:$("#reviewRegisterForm").serialize(),
