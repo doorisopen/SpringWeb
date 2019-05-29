@@ -11,9 +11,9 @@ import org.springframework.util.StopWatch;
 
 @Component
 @Aspect
-public class MyAspect {
+public class TimeCheckAspect {
 
-	private static final Logger logger = LoggerFactory.getLogger(MyAspect.class);
+	private static final Logger logger = LoggerFactory.getLogger(TimeCheckAspect.class);
 	/*
 	 *  DAO의 쿼리 수행시간 측정 하기
 	 */
@@ -36,8 +36,7 @@ public class MyAspect {
 		String className = pjp.getTarget().getClass().getName();
 		String methodName = pjp.getSignature().getName();
 		String taskName = className + "." + methodName;
-		
-		// 실행시간은 로그로 남기는 것이 좋지만, 여기서는 콘솔창에 찍도록 한다.
+
 		System.out.println("[ExecutionTime] " + taskName + " , " + total + "(ms)");
 	
 		return result;

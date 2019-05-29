@@ -6,7 +6,7 @@
 <mapper namespace="org.kpu.myweb.UserMapper">
 
 	<!-- 사용자 등록 -->
-	<insert id="UserRegister" parameterType="UserVO">
+	<insert id="UserRegister" parameterType="org.kpu.myweb.domain.UserVO">
   		INSERT INTO
   		aop_user (
   		 userId,
@@ -37,7 +37,7 @@
     </select>
     
     <!-- 사용자 프로필 조회 -->
-    <select id="UserDetail" resultType="UserVO">
+    <select id="UserDetail" resultType="org.kpu.myweb.domain.UserVO">
  		SELECT
  			* 
  		FROM 

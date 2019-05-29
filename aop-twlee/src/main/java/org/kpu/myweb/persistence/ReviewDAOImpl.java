@@ -64,9 +64,5 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.selectOne(namespace + ".getStoreName", reviewIdx);
 	}
 	
-	/*
-	 * 리뷰 등록
-	 * 
-	 */
 	
 }
