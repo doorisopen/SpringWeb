@@ -22,7 +22,6 @@ public class reviewTest {
 
 	@Autowired
 	private ReviewDAO dao;
-	private static Logger logger = LoggerFactory.getLogger(MemberDAOTest.class);
 	
 	
 	/*
